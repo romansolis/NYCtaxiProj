@@ -2,11 +2,11 @@
 	"name": "TaxiTrigger",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Started",
+		"runtimeState": "Stopped",
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "Pipeline 2",
+					"referenceName": "NYCtaxiPipeline",
 					"type": "PipelineReference"
 				}
 			}
