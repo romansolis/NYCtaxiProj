@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "16cc6106-9496-4e92-b495-3702d81c8cf0"
+				"spark.autotune.trackingId": "1751f388-9733-4980-9fec-30c640774698"
 			}
 		},
 		"metadata": {
@@ -175,6 +175,33 @@
 					"display(df)"
 				],
 				"execution_count": 22
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "python"
+					}
+				},
+				"source": [
+					"%%pyspark\r\n",
+					"df=spark.sql(\"SELECT MedallionID, HackneyLicenseID, COUNT(MedallionID) as CabTrip \r\n",
+					"FROM NYCtaxi.trip \r\n",
+					"WHERE DateID BETWEEN '20130101' AND '20130131' \r\n",
+					"GROUP BY MedallionID, HackneyLicenseID \r\n",
+					"HAVING COUNT(MedallionID) > 100\" ) \r\n",
+					"display(df)"
+				],
+				"execution_count": 28
 			}
 		]
 	}
