@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "879ec9c2-54a9-49cd-82db-ee8b60196589"
+				"spark.autotune.trackingId": "16cc6106-9496-4e92-b495-3702d81c8cf0"
 			}
 		},
 		"metadata": {
@@ -171,28 +171,10 @@
 				},
 				"source": [
 					"%%pyspark\r\n",
-					"df=spark.sql(\"Select MedallionID, HackneyLicenseID from NYCtaxi.trip where DateID='20131225' OR DateID='20131229' OR DateID='20131231'\")\r\n",
+					"df=spark.sql(\"Select MedallionID, HackneyLicenseID, count(MedallionID) as CabTrip , count(HackneyLicenseID) as DriverTrip from NYCtaxi.trip Group by MedallionID,HackneyLicenseID\" )\r\n",
 					"display(df)"
 				],
-				"execution_count": 16
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					}
-				},
-				"source": [
-					""
-				],
-				"execution_count": null
+				"execution_count": 22
 			}
 		]
 	}
